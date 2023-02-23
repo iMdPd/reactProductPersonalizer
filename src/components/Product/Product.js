@@ -4,7 +4,7 @@ import Button from "../Button/Button";
 import PropTypes from "prop-types";
 import { useState } from "react";
 
-export const Product = ({ colors, sizes, title, basePrice }) => {
+export const Product = ({ colors, sizes, name, title, basePrice }) => {
   const [setCurrentColor] = useState(colors[0]);
   const [setCurrentSize] = useState(sizes[0]);
 
@@ -14,7 +14,7 @@ export const Product = ({ colors, sizes, title, basePrice }) => {
         <img
           className={styles.image}
           alt={title}
-          src={`${process.env.PUBLIC_URL}/images/products/shirt-kodilla--black.jpg`}
+          src={`${process.env.PUBLIC_URL}/images/products/shirt-${name}--${setCurrentColor}.jpg`}
         />
       </div>
       <div>
