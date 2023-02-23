@@ -1,13 +1,14 @@
 import styles from "./Product.module.scss";
-import clsx from "clsx";
+
 import Button from "../Button/Button";
 import PropTypes from "prop-types";
 import { useState } from "react";
-import { TShirtSize } from "../T-ShirtSize/TShirtSize";
+import { TShirtSize } from "../TShirtSize/TShirtSize";
+import { TShirtColor } from "../TShirtColor/TShirtColor";
 
 export const Product = ({ colors, sizes, name, title, basePrice }) => {
   const [setCurrentColor] = useState(colors[0]);
-  const [setCurrentSize] = useState(sizes[0]);
+  const [setCurrentSize] = useState(sizes[0].name);
 
   return (
     <article className={styles.product}>
@@ -27,26 +28,23 @@ export const Product = ({ colors, sizes, name, title, basePrice }) => {
           <div className={styles.sizes}>
             <h3 className={styles.optionLabel}>Sizes</h3>
             <ul className={styles.choices}>
-              {sizes.map(({ name }) => (
-                <TShirtSize>{name}</TShirtSize>
+              {sizes.map(({ name }, i) => (
+                <TShirtSize key={i} currentSize={setCurrentSize}>
+                  {name}
+                </TShirtSize>
               ))}
             </ul>
           </div>
           <div className={styles.colors}>
             <h3 className={styles.optionLabel}>Colors</h3>
             <ul className={styles.choices}>
-              <li>
-                <button
-                  type="button"
-                  className={clsx(styles.colorBlack, styles.active)}
+              {colors.map((color, i) => (
+                <TShirtColor
+                  key={i}
+                  type={color}
+                  currentColor={setCurrentColor}
                 />
-              </li>
-              <li>
-                <button type="button" className={clsx(styles.colorRed)} />
-              </li>
-              <li>
-                <button type="button" className={clsx(styles.colorWhite)} />
-              </li>
+              ))}
             </ul>
           </div>
           <Button className={styles.button}>
