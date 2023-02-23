@@ -2,8 +2,12 @@ import styles from "./Product.module.scss";
 import clsx from "clsx";
 import Button from "../Button/Button";
 import PropTypes from "prop-types";
+import { useState } from "react";
 
-export const Product = ({ title, basePrice }) => {
+export const Product = ({ colors, sizes, title, basePrice }) => {
+  const [setCurrentColor] = useState(colors[0]);
+  const [setCurrentSize] = useState(sizes[0]);
+
   return (
     <article className={styles.product}>
       <div className={styles.imageContainer}>
