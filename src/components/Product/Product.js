@@ -3,6 +3,7 @@ import clsx from "clsx";
 import Button from "../Button/Button";
 import PropTypes from "prop-types";
 import { useState } from "react";
+import { TShirtSize } from "../T-ShirtSize/TShirtSize";
 
 export const Product = ({ colors, sizes, name, title, basePrice }) => {
   const [setCurrentColor] = useState(colors[0]);
@@ -26,20 +27,9 @@ export const Product = ({ colors, sizes, name, title, basePrice }) => {
           <div className={styles.sizes}>
             <h3 className={styles.optionLabel}>Sizes</h3>
             <ul className={styles.choices}>
-              <li>
-                <button type="button" className={styles.active}>
-                  S
-                </button>
-              </li>
-              <li>
-                <button type="button">M</button>
-              </li>
-              <li>
-                <button type="button">L</button>
-              </li>
-              <li>
-                <button type="button">XL</button>
-              </li>
+              {sizes.map(({ name }) => (
+                <TShirtSize>{name}</TShirtSize>
+              ))}
             </ul>
           </div>
           <div className={styles.colors}>
