@@ -1,15 +1,12 @@
-import Products from './components/Products/Products';
-import Header from './components/Header/Header';
-import Container from './components/Container/Container';
+import { Products } from "./components/Container/Products/Products";
+import { Header } from "./components/Container/Header/Header";
+import { Container } from "./components/Container/Container";
 
-const App = () => {
-
+export const App = () => {
   return (
     <Container>
       <Header />
       <Products />
     </Container>
   );
-}
-
-export default App;
+};

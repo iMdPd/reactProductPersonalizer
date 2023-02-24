@@ -1,4 +1,4 @@
-import styles from "../Product/Product.module.scss";
+import styles from "../ProductForm.module.scss";
 import clsx from "clsx";
 
 export const ProductSizeButton = ({ children, currentSize, onClick }) => {

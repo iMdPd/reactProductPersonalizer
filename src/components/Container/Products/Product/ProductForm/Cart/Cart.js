@@ -1,12 +1,10 @@
-import styles from "./Button.module.scss";
+import styles from "./Cart.module.scss";
 import clsx from "clsx";
 
-const Button = ({ onClick, className, children }) => {
+export const Cart = ({ onClick, className, children }) => {
   return (
     <button onClick={onClick} className={clsx(styles.button, className)}>
       {children}
     </button>
   );
 };
-
-export default Button;

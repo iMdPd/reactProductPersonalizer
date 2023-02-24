@@ -1,8 +1,8 @@
 import { useState } from "react";
-import productsData from "../../data/products";
-import { Product } from "../Product/Product";
+import productsData from "../../../data/products";
+import { Product } from "./Product/Product";
 
-const Products = () => {
+export const Products = () => {
   const [products] = useState(productsData);
 
   return (
@@ -13,5 +13,3 @@ const Products = () => {
     </section>
   );
 };
-
-export default Products;
