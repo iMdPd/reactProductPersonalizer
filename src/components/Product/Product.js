@@ -1,4 +1,5 @@
 import styles from "./Product.module.scss";
+import clsx from "clsx";
 
 import Button from "../Button/Button";
 import PropTypes from "prop-types";
