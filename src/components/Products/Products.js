@@ -5,8 +5,6 @@ import { Product } from "../Product/Product";
 const Products = () => {
   const [products] = useState(productsData);
 
-  console.log(products);
-
   return (
     <section>
       {products.map((product) => (

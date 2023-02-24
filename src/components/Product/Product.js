@@ -9,9 +9,15 @@ import { TShirtColor } from "../TShirtColor/TShirtColor";
 export const Product = ({ colors, sizes, name, title, basePrice }) => {
   const [currentColor, setCurrentColor] = useState(colors[0]);
   const [currentSize, setCurrentSize] = useState(sizes[0].name);
+  const [currentPrice, setCurrentPrice] = useState(basePrice);
 
   const handleActiveButton = (param) => {
+    console.log(param);
     colors.includes(param) ? setCurrentColor(param) : setCurrentSize(param);
+  };
+
+  const sizeValue = (param) => {
+    setCurrentPrice(basePrice + param);
   };
 
   return (
@@ -26,17 +32,20 @@ export const Product = ({ colors, sizes, name, title, basePrice }) => {
       <div>
         <header>
           <h2 className={styles.name}>{title}</h2>
-          <span className={styles.price}>{basePrice}</span>
+          <span className={styles.price}>{currentPrice}</span>
         </header>
         <form>
           <div className={styles.sizes}>
             <h3 className={styles.optionLabel}>Sizes</h3>
             <ul className={styles.choices}>
-              {sizes.map(({ name }, i) => (
+              {sizes.map(({ name, additionalPrice }, i) => (
                 <TShirtSize
                   key={i}
                   currentSize={currentSize}
-                  onClick={() => handleActiveButton(name)}
+                  onClick={() => {
+                    handleActiveButton(name);
+                    sizeValue(additionalPrice);
+                  }}
                 >
                   {name}
                 </TShirtSize>
