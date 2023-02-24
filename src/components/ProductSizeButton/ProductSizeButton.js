@@ -1,7 +1,7 @@
 import styles from "../Product/Product.module.scss";
 import clsx from "clsx";
 
-export const TShirtSize = ({ children, currentSize, onClick }) => {
+export const ProductSizeButton = ({ children, currentSize, onClick }) => {
   return (
     <li>
       <button

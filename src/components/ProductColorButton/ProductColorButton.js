@@ -1,7 +1,7 @@
 import styles from "../Product/Product.module.scss";
 import clsx from "clsx";
 
-export const TShirtColor = ({ type, currentColor, onClick }) => {
+export const ProductColorButton = ({ type, currentColor, onClick }) => {
   const prepareClassColorName = (colorName) => {
     return (
       `color` +

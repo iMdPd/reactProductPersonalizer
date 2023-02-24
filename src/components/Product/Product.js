@@ -2,22 +2,31 @@ import styles from "./Product.module.scss";
 
 import Button from "../Button/Button";
 import PropTypes from "prop-types";
+import { ProductSizeButton } from "../ProductSizeButton/ProductSizeButton";
+import { ProductColorButton } from "../ProductColorButton/ProductColorButton";
 import { useState } from "react";
-import { TShirtSize } from "../TShirtSize/TShirtSize";
-import { TShirtColor } from "../TShirtColor/TShirtColor";
 
 export const Product = ({ colors, sizes, name, title, basePrice }) => {
   const [currentColor, setCurrentColor] = useState(colors[0]);
   const [currentSize, setCurrentSize] = useState(sizes[0].name);
   const [currentPrice, setCurrentPrice] = useState(basePrice);
 
-  const handleActiveButton = (param) => {
-    console.log(param);
+  const handleActiveClass = (param) => {
     colors.includes(param) ? setCurrentColor(param) : setCurrentSize(param);
   };
 
-  const sizeValue = (param) => {
+  const productValue = (param) => {
     setCurrentPrice(basePrice + param);
+  };
+
+  const productSummary = (e) => {
+    e.preventDefault();
+    console.log("        SUMMARY");
+    console.log("_______________________");
+    console.log("Name :", title);
+    console.log("Price :", currentPrice);
+    console.log("Size :", currentSize);
+    console.log("Color :", currentColor);
   };
 
   return (
@@ -38,34 +47,34 @@ export const Product = ({ colors, sizes, name, title, basePrice }) => {
           <div className={styles.sizes}>
             <h3 className={styles.optionLabel}>Sizes</h3>
             <ul className={styles.choices}>
-              {sizes.map(({ name, additionalPrice }, i) => (
-                <TShirtSize
-                  key={i}
+              {sizes.map(({ name, additionalPrice }, index) => (
+                <ProductSizeButton
+                  key={index}
                   currentSize={currentSize}
                   onClick={() => {
-                    handleActiveButton(name);
-                    sizeValue(additionalPrice);
+                    handleActiveClass(name);
+                    productValue(additionalPrice);
                   }}
                 >
                   {name}
-                </TShirtSize>
+                </ProductSizeButton>
               ))}
             </ul>
           </div>
           <div className={styles.colors}>
             <h3 className={styles.optionLabel}>Colors</h3>
             <ul className={styles.choices}>
-              {colors.map((color, i) => (
-                <TShirtColor
-                  key={i}
+              {colors.map((color, index) => (
+                <ProductColorButton
+                  key={index}
                   type={color}
                   currentColor={currentColor}
-                  onClick={() => handleActiveButton(color)}
+                  onClick={() => handleActiveClass(color)}
                 />
               ))}
             </ul>
           </div>
-          <Button className={styles.button}>
+          <Button onClick={productSummary} className={styles.button}>
             <span className="fa fa-shopping-cart" />
           </Button>
         </form>
