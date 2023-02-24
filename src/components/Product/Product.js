@@ -1,5 +1,4 @@
 import styles from "./Product.module.scss";
-import clsx from "clsx";
 
 import Button from "../Button/Button";
 import PropTypes from "prop-types";
@@ -8,8 +7,12 @@ import { TShirtSize } from "../TShirtSize/TShirtSize";
 import { TShirtColor } from "../TShirtColor/TShirtColor";
 
 export const Product = ({ colors, sizes, name, title, basePrice }) => {
-  const [setCurrentColor] = useState(colors[0]);
-  const [setCurrentSize] = useState(sizes[0].name);
+  const [currentColor, setCurrentColor] = useState(colors[0]);
+  const [currentSize, setCurrentSize] = useState(sizes[0].name);
+
+  const handleActiveButton = (param) => {
+    colors.includes(param) ? setCurrentColor(param) : setCurrentSize(param);
+  };
 
   return (
     <article className={styles.product}>
@@ -17,7 +20,7 @@ export const Product = ({ colors, sizes, name, title, basePrice }) => {
         <img
           className={styles.image}
           alt={title}
-          src={`${process.env.PUBLIC_URL}/images/products/shirt-${name}--${setCurrentColor}.jpg`}
+          src={`${process.env.PUBLIC_URL}/images/products/shirt-${name}--${currentColor}.jpg`}
         />
       </div>
       <div>
@@ -30,7 +33,11 @@ export const Product = ({ colors, sizes, name, title, basePrice }) => {
             <h3 className={styles.optionLabel}>Sizes</h3>
             <ul className={styles.choices}>
               {sizes.map(({ name }, i) => (
-                <TShirtSize key={i} currentSize={setCurrentSize}>
+                <TShirtSize
+                  key={i}
+                  currentSize={currentSize}
+                  onClick={() => handleActiveButton(name)}
+                >
                   {name}
                 </TShirtSize>
               ))}
@@ -43,7 +50,8 @@ export const Product = ({ colors, sizes, name, title, basePrice }) => {
                 <TShirtColor
                   key={i}
                   type={color}
-                  currentColor={setCurrentColor}
+                  currentColor={currentColor}
+                  onClick={() => handleActiveButton(color)}
                 />
               ))}
             </ul>
