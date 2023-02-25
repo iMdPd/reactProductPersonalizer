@@ -11,7 +11,7 @@ export const ProductForm = ({
   currentSize,
   currentColor,
   handleActiveClass,
-  productValue,
+  setCurrentPrice,
   productSummary,
 }) => {
   return (
@@ -25,7 +25,7 @@ export const ProductForm = ({
               currentSize={currentSize}
               onClick={() => {
                 handleActiveClass(name);
-                productValue(additionalPrice);
+                setCurrentPrice(additionalPrice);
               }}
             >
               {name}
@@ -64,6 +64,6 @@ ProductForm.propTypes = {
   currentColor: PropTypes.string.isRequired,
   currentSize: PropTypes.string.isRequired,
   handleActiveClass: PropTypes.func.isRequired,
-  productValue: PropTypes.func.isRequired,
+  setCurrentPrice: PropTypes.func.isRequired,
   productSummary: PropTypes.func.isRequired,
 };

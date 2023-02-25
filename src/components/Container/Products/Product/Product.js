@@ -1,7 +1,7 @@
 import styles from "./Product.module.scss";
 
 import PropTypes from "prop-types";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { ProductImage } from "./ProductImage/ProductImage";
 import { ProductTitle } from "./ProductTitle/ProductTitle";
 import { ProductForm } from "./ProductForm/ProductForm";
@@ -9,22 +9,23 @@ import { ProductForm } from "./ProductForm/ProductForm";
 export const Product = ({ colors, sizes, name, title, basePrice }) => {
   const [currentColor, setCurrentColor] = useState(colors[0]);
   const [currentSize, setCurrentSize] = useState(sizes[0].name);
-  const [currentPrice, setCurrentPrice] = useState(basePrice);
+  const [currentPrice, setCurrentPrice] = useState(sizes[0].additionalPrice);
 
   const handleActiveClass = (value) => {
     colors.includes(value) ? setCurrentColor(value) : setCurrentSize(value);
   };
 
-  const productValue = (value) => {
-    setCurrentPrice(basePrice + value);
-  };
+  const getPrice = useMemo(
+    () => currentPrice + basePrice,
+    [currentPrice, basePrice]
+  );
 
   const productSummary = (e) => {
     e.preventDefault();
 
     const summary = {
       Name: title,
-      Price: currentPrice,
+      Price: getPrice,
       Size: currentSize,
       Color: currentColor,
     };
@@ -36,14 +37,14 @@ export const Product = ({ colors, sizes, name, title, basePrice }) => {
     <article className={styles.product}>
       <ProductImage name={name} title={title} currentColor={currentColor} />
       <div>
-        <ProductTitle title={title} currentPrice={currentPrice} />
+        <ProductTitle title={title} getPrice={getPrice} />
         <ProductForm
           sizes={sizes}
           colors={colors}
           currentSize={currentSize}
           currentColor={currentColor}
           handleActiveClass={handleActiveClass}
-          productValue={productValue}
+          setCurrentPrice={setCurrentPrice}
           productSummary={productSummary}
         />
       </div>
