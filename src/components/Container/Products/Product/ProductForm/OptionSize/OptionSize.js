@@ -2,7 +2,7 @@ import styles from "../ProductForm.module.scss";
 import PropTypes from "prop-types";
 import clsx from "clsx";
 
-export const ProductSizeButton = ({ children, currentSize, onClick }) => {
+export const OptionSize = ({ children, currentSize, onClick }) => {
   return (
     <li>
       <button
@@ -16,7 +16,7 @@ export const ProductSizeButton = ({ children, currentSize, onClick }) => {
   );
 };
 
-ProductSizeButton.propTypes = {
+OptionSize.propTypes = {
   children: PropTypes.string.isRequired,
   currentSize: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,

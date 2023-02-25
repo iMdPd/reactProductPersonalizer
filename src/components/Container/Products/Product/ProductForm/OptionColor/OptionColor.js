@@ -2,7 +2,7 @@ import styles from "../ProductForm.module.scss";
 import clsx from "clsx";
 import PropTypes from "prop-types";
 
-export const ProductColorButton = ({ type, currentColor, onClick }) => {
+export const OptionColor = ({ type, currentColor, onClick }) => {
   const prepareClassColorName = (colorName) => {
     return (
       `color` +
@@ -24,7 +24,7 @@ export const ProductColorButton = ({ type, currentColor, onClick }) => {
   );
 };
 
-ProductColorButton.propTypes = {
+OptionColor.propTypes = {
   type: PropTypes.string.isRequired,
   currentColor: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,

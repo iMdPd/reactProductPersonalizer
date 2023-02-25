@@ -2,8 +2,8 @@ import styles from "./ProductForm.module.scss";
 import PropTypes from "prop-types";
 
 import { Cart } from "./Cart/Cart";
-import { ProductSizeButton } from "./ProductSizeButton/ProductSizeButton";
-import { ProductColorButton } from "./ProductColorButton/ProductColorButton";
+import { OptionSize } from "./OptionSize/OptionSize";
+import { OptionColor } from "./OptionColor/OptionColor";
 
 export const ProductForm = ({
   sizes,
@@ -20,7 +20,7 @@ export const ProductForm = ({
         <h3 className={styles.optionLabel}>Sizes</h3>
         <ul className={styles.choices}>
           {sizes.map(({ name, additionalPrice }, index) => (
-            <ProductSizeButton
+            <OptionSize
               key={index}
               currentSize={currentSize}
               onClick={() => {
@@ -29,7 +29,7 @@ export const ProductForm = ({
               }}
             >
               {name}
-            </ProductSizeButton>
+            </OptionSize>
           ))}
         </ul>
       </div>
@@ -37,7 +37,7 @@ export const ProductForm = ({
         <h3 className={styles.optionLabel}>Colors</h3>
         <ul className={styles.choices}>
           {colors.map((color, index) => (
-            <ProductColorButton
+            <OptionColor
               key={index}
               type={color}
               currentColor={currentColor}
