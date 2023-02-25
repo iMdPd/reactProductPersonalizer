@@ -2,10 +2,11 @@ import styles from "./ProductTitle.module.scss";
 import PropTypes from "prop-types";
 
 export const ProductTitle = ({ title, currentPrice }) => {
+  console.log(currentPrice);
   return (
     <header>
       <h2 className={styles.name}>{title}</h2>
-      <span className={styles.price}>{currentPrice}</span>
+      <span className={styles.price}>Price: {currentPrice}$</span>
     </header>
   );
 };
