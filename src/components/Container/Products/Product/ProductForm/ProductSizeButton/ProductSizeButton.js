@@ -1,4 +1,5 @@
 import styles from "../ProductForm.module.scss";
+import PropTypes from "prop-types";
 import clsx from "clsx";
 
 export const ProductSizeButton = ({ children, currentSize, onClick }) => {
@@ -13,4 +14,10 @@ export const ProductSizeButton = ({ children, currentSize, onClick }) => {
       </button>
     </li>
   );
+};
+
+ProductSizeButton.propTypes = {
+  children: PropTypes.string.isRequired,
+  currentSize: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
 };

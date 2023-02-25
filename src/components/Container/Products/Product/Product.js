@@ -11,22 +11,25 @@ export const Product = ({ colors, sizes, name, title, basePrice }) => {
   const [currentSize, setCurrentSize] = useState(sizes[0].name);
   const [currentPrice, setCurrentPrice] = useState(basePrice);
 
-  const handleActiveClass = (param) => {
-    colors.includes(param) ? setCurrentColor(param) : setCurrentSize(param);
+  const handleActiveClass = (value) => {
+    colors.includes(value) ? setCurrentColor(value) : setCurrentSize(value);
   };
 
-  const productValue = (param) => {
-    setCurrentPrice(basePrice + param);
+  const productValue = (value) => {
+    setCurrentPrice(basePrice + value);
   };
 
   const productSummary = (e) => {
     e.preventDefault();
-    console.log("        SUMMARY");
-    console.log("_______________________");
-    console.log("Name :", title);
-    console.log("Price :", currentPrice);
-    console.log("Size :", currentSize);
-    console.log("Color :", currentColor);
+
+    const summary = {
+      Name: title,
+      Price: currentPrice,
+      Size: currentSize,
+      Color: currentColor,
+    };
+
+    console.table(summary);
   };
 
   return (
@@ -36,8 +39,8 @@ export const Product = ({ colors, sizes, name, title, basePrice }) => {
         <ProductTitle title={title} currentPrice={currentPrice} />
         <ProductForm
           sizes={sizes}
-          currentSize={currentSize}
           colors={colors}
+          currentSize={currentSize}
           currentColor={currentColor}
           handleActiveClass={handleActiveClass}
           productValue={productValue}

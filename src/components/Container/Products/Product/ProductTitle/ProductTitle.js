@@ -1,4 +1,5 @@
 import styles from "./ProductTitle.module.scss";
+import PropTypes from "prop-types";
 
 export const ProductTitle = ({ title, currentPrice }) => {
   return (
@@ -7,4 +8,9 @@ export const ProductTitle = ({ title, currentPrice }) => {
       <span className={styles.price}>{currentPrice}</span>
     </header>
   );
+};
+
+ProductTitle.propTypes = {
+  title: PropTypes.string.isRequired,
+  currentPrice: PropTypes.number.isRequired,
 };

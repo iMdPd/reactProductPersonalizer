@@ -1,5 +1,6 @@
 import styles from "./Cart.module.scss";
 import clsx from "clsx";
+import PropTypes from "prop-types";
 
 export const Cart = ({ onClick, className, children }) => {
   return (
@@ -7,4 +8,10 @@ export const Cart = ({ onClick, className, children }) => {
       {children}
     </button>
   );
+};
+
+Cart.propTypes = {
+  onClick: PropTypes.func.isRequired,
+  className: PropTypes.string.isRequired,
+  children: PropTypes.object.isRequired,
 };

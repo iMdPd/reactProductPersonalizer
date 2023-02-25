@@ -1,4 +1,5 @@
 import styles from "./ProductForm.module.scss";
+import PropTypes from "prop-types";
 
 import { Cart } from "./Cart/Cart";
 import { ProductSizeButton } from "./ProductSizeButton/ProductSizeButton";
@@ -6,8 +7,8 @@ import { ProductColorButton } from "./ProductColorButton/ProductColorButton";
 
 export const ProductForm = ({
   sizes,
-  currentSize,
   colors,
+  currentSize,
   currentColor,
   handleActiveClass,
   productValue,
@@ -50,4 +51,19 @@ export const ProductForm = ({
       </Cart>
     </form>
   );
+};
+
+ProductForm.propTypes = {
+  sizes: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string,
+      additionalPrice: PropTypes.number,
+    })
+  ),
+  colors: PropTypes.arrayOf(PropTypes.string),
+  currentColor: PropTypes.string.isRequired,
+  currentSize: PropTypes.string.isRequired,
+  handleActiveClass: PropTypes.func.isRequired,
+  productValue: PropTypes.func.isRequired,
+  productSummary: PropTypes.func.isRequired,
 };
