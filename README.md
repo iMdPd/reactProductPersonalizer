@@ -8,6 +8,7 @@
 <h4 align="center">Product Personalizer App created as part of the Kodilla Bootcamp project. <br /> Website was developed using React component class definition, Prop-types and CLSX packages.
 
 <br/>
+<br/>
 
 <p align="center">
   <a href="#demo">Demo</a> •
