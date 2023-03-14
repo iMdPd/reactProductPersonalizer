@@ -44,7 +44,7 @@ The application allows you to personalize the ordered T-shirts. Changing product
 
 <p align="right">(<a  href="#readme-top">back to top</a>)</p>
 
-## 🛠️ <a id="languages">Languages & tools</a>
+## 🛠️ <a id="languages">Languages & tools :</a>
 
 |                                                                   Language / Tool                                                                    | Description                                                                 |
 | :--------------------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------- |
